@@ -11,8 +11,14 @@ loginBtn.addEventListener('click', function () {
 const depositBtn = document.getElementById('addDeposit'); 
 depositBtn.addEventListener("click", function () {
     const depositNumber = getInputNumber('depositAmount');
-    updateSpanText('currentDeposit', depositNumber);
-    updateSpanText('currentBalance', depositNumber);
+
+    if (depositNumber < 0) {
+        alert('Deposit number cannot be negative')
+    } 
+    else {
+        updateSpanText('currentDeposit', depositNumber);
+        updateSpanText('currentBalance', depositNumber);
+    }
     document.getElementById('depositAmount').value = "";
 })
 
@@ -20,9 +26,12 @@ depositBtn.addEventListener("click", function () {
 const withdrawBtn = document.getElementById('addWithdraw');
 withdrawBtn.addEventListener('click', function() {
     const withdrawNumber = getInputNumber('withdrawAmount');
-    console.log(withdrawNumber);
-    updateSpanText('currentWithdraw', withdrawNumber);
-    updateSpanText('currentBalance', -1 * withdrawNumber);
+    if (withdrawNumber < 0) {
+        alert('Deposit number cannot be negative')
+    } else {
+        updateSpanText('currentWithdraw', withdrawNumber);
+        updateSpanText('currentBalance', -1 * withdrawNumber);
+    }
     document.getElementById('withdrawAmount').value = "";
 })
 
